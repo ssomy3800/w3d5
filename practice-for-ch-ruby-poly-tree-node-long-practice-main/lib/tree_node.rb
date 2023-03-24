@@ -30,8 +30,20 @@ class PolyTreeNode
             raise_error 'the node has no parent/node is not a child' 
         end 
         node.parent=(nil)
-
     end
+
+
+    def dfs(key)
+        return self if self.value == key
+
+        self.children.each do |ele| 
+           result = ele.dfs(key) 
+           return result if result != nil
+
+        end
+     return nil
+    end
+
 
     
 
