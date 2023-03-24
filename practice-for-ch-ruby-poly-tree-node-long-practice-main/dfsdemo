@@ -1,0 +1,89 @@
+# ADT/Data Structure used for implementation: DFS / Stack
+# Recursion
+
+def DFS(root, target)
+    # Start our stack with the root node
+    # return node if node is target, the base case
+
+    # iterate through node's children
+        # call DFS on EACH child node
+        # if result is not nil, return node (this means we found what we want and return that node)
+            # We dont want to return nil because that would return too early when we didnt check other nodes
+
+    # return nil if target is not found
+end
+
+# Arguments
+    # root = a
+    # target = d
+
+    # STACK Frame 1 (a, d)
+    # Is a == d? NO
+    # Recursively call DFS on each of a's children
+        # dfs(b, d) PAUSE WAITING
+            # No longer waiting, return was D NODE
+            # Is result nil? NO
+            # RETURN RESULT NODE!
+        # dfs(c, d)
+
+    # STACK Frame 2 (b, d)
+    # Is b == d? NO
+    # Recursively call DFS on each of b's children
+        # dfs(d, d) PAUSE WAITING
+            # No longer waiting, return was D NODE
+            # Is result nil? NO
+            # RETURN RESULT NODE!
+        # dfs(e, d)
+
+    # STACK Frame 3 (d, d)
+    # Is d == d? YES!!!
+    # RETURN NODE!
+
+    # --------------------------------------------------
+
+    # WITH NIL EXAMPLE
+
+    # Arguments
+    # root = a
+    # target = c
+
+    # STACK Frame 1 (a, c)
+    # Is a == c? NO
+    # Recursively call DFS on each of a's children
+        # dfs(b, c) PAUSE WAITING
+            # No longer waiting, result was NIL
+            # Is result nil? YES
+            # SO NO RETURN HAPPENED
+        # dfs(c, c) PAUSE WAITING
+            # No longer waiting, result was C NODE
+            # Is result nil? NO
+            # RETURN RESULT NODE!
+
+    # STACK Frame 2a (b, c)
+    # Is b == c? NO
+    # Recursively call DFS on each of b's children
+        # dfs(d, c) PAUSE WAITING
+            # No longer waiting, result was NIL
+            # Is result nil? YES
+            # SO NO RETURN HAPPENED
+        # dfs(e, c) PAUSE WAITING
+            # No longer waiting, result was NIL
+            # If result nil? YES
+            # SO NO RETURN HAPPENED
+    # RETURN NIL, TARGET WAS NOT FOUND
+
+    # STACK Frame 3a (d, c)
+    # Is d == c? NO
+    # Iterate through node's children, OH! WAIT!
+        # D Node has no children
+    # RETURN NIL, TARGET WAS NOT FOUND
+
+    # STACK Frame 3b (e, c)
+    # Is e == c? NO
+    # Iterate through node's children, OH! WAIT!
+        # E Node has no children
+    # RETURN NIL, TARGET WAS NOT FOUND
+
+    # STACK Frame 2b (c, c)
+    # Is c == c? YES
+    # RETURN C NODE!
