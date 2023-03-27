@@ -7,13 +7,28 @@ class KnightPathFinder
         @start = start 
         @consider_positions = [start]
         @root_node = PolyTreeNode.new(start)
-        # self.build_move_tree(root_node)
+        self.build_move_tree(@root_node)
+        p self.build_move_tree(@root_node)
     end
 
-    def find_path(destination)
-        start_point = PolyTreeNode.new(start) 
+    # def find_path(destination)
+    #     start_point = PolyTreeNode.new(start) 
 
-    end
+    # end
+    def build_move_tree(root)
+        queue = [root] # create a queue to hold nodes to process
+        until queue.empty? # process nodes in the queue until there are none left
+          node = queue.shift # get the next node from the front of the queue
+          new_positions = new_move_positions(node.value) # generate new positions to add as child nodes
+          new_positions.each do |pos|
+            child = PolyTreeNode.new(pos)
+            node.add_child(child) # add the child node to the current node
+            queue << child # add the child node to the end of the queue to process later
+          end
+        end
+        root # return the root node of the tree
+      end
+      
 
     def new_move_position(pos)
         temp = KnightPathFinder.valid_move(pos)
@@ -50,6 +65,6 @@ end
 
 # p KnightPathFinder.valid_move([3,3])
 k = KnightPathFinder.new([0,0])
-p k.new_move_position([0,0])
-p k.new_move_position([1,2])
-p k.new_move_position([2,4])
+# p k.new_move_position([0,0])
+# p k.new_move_position([1,2])
+# p k.new_move_position([2,4])
